@@ -1,0 +1,64 @@
+body {
+  background-color: #FF9F71;
+}
+
+#container {
+  width: 50%;
+  margin-left: 25%;
+}
+
+#doge {
+  width: 30%;
+}
+
+#title {
+  font-family: 'Pacifico', cursive;
+  font-size: 4em;
+  text-align: center;
+  margin-top: 30px;
+  text-shadow: 2px 2px 0px white;
+}
+
+.delivery {
+  font-size: 2.5em;
+  width: 100%;
+  min-height: 120px;
+  background-color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 220px;
+  border: 3px solid #cccccc;
+
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+  text-align: center;
+}
+
+textarea {
+  font-size: 2em;
+  width: 100%;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+.butan {
+  width: 100%;
+  height: 60px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 2em;
+  color: black;
+  background-color: white;
+  display: inline;
+}
+
+#textbox {
+  margin-bottom: 30px;
+}
