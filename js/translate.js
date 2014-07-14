@@ -102,5 +102,6 @@ var translateFromEnglishToEmoji = function(inputString) {
 
 
 var deliverText = function(valueToDeliver) {
+    console.log(valueToDeliver)
     $("#delivery").html(valueToDeliver)
 }

@@ -25,6 +25,14 @@ body {
 }
 
 
+.mobile-menu {
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 0px white;
+  display: none;
+  font-size: 2em;
+  text-align: center;
+}
+
 #menutitle {
   font-family: 'Pacifico', cursive;
   font-size: 1.5em;
@@ -53,6 +61,19 @@ body {
 
 /*}*/
 
+#delivery {
+    height: auto;
+  font-size: 1.5em;
+  width: 100%;
+  resize: none;
+  padding: 5%;
+  outline: none;
+  border: 3px solid white;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+  color: gray;
+}
+
 
 
 .subtitle {
@@ -62,7 +83,9 @@ body {
 }
 
 textarea {
-  min-height: 150px;
+  /*min-heig
+  ht: 150px;*/
+  height: auto;
   font-size: 1.5em;
   width: 100%;
   resize: none;
@@ -101,9 +124,11 @@ textarea {
 .pure-button {
   text-align: center;
   width: 80%;
+  padding: 0;
+  height: 3em;
   min-width: 100px;
-  font-size: 3em;
-  margin: 10px 6%;
+  font-size: 2.3em;
+  margin: 10px 10%;
   background-color: #0ABFBC;
   border: 3px solid white;
   border-radius: 10px;
@@ -128,3 +153,20 @@ button p  {
   font-size: .5em;
   margin: 0 auto;
 }
+
+@media (max-width: 600px) {
+  .pure-button {
+    height: 3em;
+    font-size: 1em;
+  }
+  .pure-menu{
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
+  #title{
+    display:none;
+  }
+}
+
