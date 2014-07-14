@@ -1,7 +1,7 @@
 body {
-  background-color: #FF9F71;
+  background-color: #FCF7C5;
+  background-image: url('background.png');
   font-family: 'Open Sans', sans-serif;
-
 }
 
 #container {
@@ -36,22 +36,24 @@ body {
   font-family: 'Pacifico', cursive;
   font-size: 2em;
   text-align: center;
-  margin-top: 30px;
+  margin: 15px 0px;
   text-shadow: 2px 2px 0px white;
 }
 
-#delivery {
-  font-size: 1.5em;
-  background-color: white;
-  margin-top: 10px;
+/*#delivery {*/
+  /*font-size: 1.5em;*/
+  /*background-color: white;*/
+  /*margin-top: 10px;*/
   /*margin-bottom: 30px;*/
-  height: auto;
-  padding: 5%;
-  width: 80%;
-  margin-left: 5%;
-  border: 3px solid #cccccc;
+  /*height: auto;*/
+  /*padding: 5%;*/
+  /*width: 80%;*/
+  /*margin-left: 5%;*/
+  /*border: 3px solid #cccccc;*/
 
-}
+/*}*/
+
+
 
 .subtitle {
   font-family: 'Open Sans', sans-serif;
@@ -60,16 +62,17 @@ body {
 }
 
 textarea {
-  height: auto;
+  min-height: 150px;
   font-size: 1.5em;
-  width: 80%;
-  margin: 10px 0;
+  width: 100%;
+  resize: none;
   padding: 5%;
-  border: 3px solid #cccccc;
+  outline: none;
+  border: 3px solid white;
   font-family: 'Open Sans', sans-serif;
 }
 
-#textbox-container {
+.textbox-container {
   width: 80%;
   margin-left: 5%;
 }
@@ -91,15 +94,24 @@ textarea {
 }
 */
 
+.button-styles {
+  color: red;
+}
+
 .pure-button {
-  width: 50%;
-  font-size: 2em;
-  margin: 10px 25%;
+  text-align: center;
+  width: 80%;
+  min-width: 100px;
+  font-size: 3em;
+  margin: 10px 6%;
+  background-color: #0ABFBC;
+  border: 3px solid white;
+  border-radius: 10px;
 }
 
 #textbox {
   margin-bottom: 30px;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 .about-box {
@@ -109,4 +121,10 @@ textarea {
 
 .about-title {
   text-align: center;
+}
+
+button p  {
+  text-align: center;
+  font-size: .5em;
+  margin: 0 auto;
 }
