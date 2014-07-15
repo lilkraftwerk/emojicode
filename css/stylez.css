@@ -222,3 +222,8 @@ button p  {
   margin: 0;
   font-style: italic;
 }
+
+#splash a {
+  text-decoration: none;
+  color: black;
+}
