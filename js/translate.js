@@ -9,6 +9,9 @@ $(document).ready(function() {
     })
 })
 
+window.onload = function() {
+    setDeliverySameSize()
+}
 
 var emojiStringToArray = function(str) {
     split = str.split(/([\uD800-\uDBFF][\uDC00-\uDFFF])/);
@@ -102,6 +105,15 @@ var translateFromEnglishToEmoji = function(inputString) {
 
 
 var deliverText = function(valueToDeliver) {
-    console.log(valueToDeliver)
     $("#delivery").html(valueToDeliver)
+    setDeliveryAuto()
+}
+
+var setDeliverySameSize = function() {
+    $("#delivery").height($("#textbox").height())
+}
+
+var setDeliveryAuto = function() {
+    $("#delivery").height('auto')
+
 }
