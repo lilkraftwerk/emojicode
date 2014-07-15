@@ -7,6 +7,10 @@ $(document).ready(function() {
         var textToTranslate = getTextboxValue()
         translateFromEmojiToEnglish(textToTranslate)
     })
+    checkForChrome()
+    $("#textbox").keyup(function() {
+        disableButtonsWithNoText()
+    })
 })
 
 window.onload = function() {
@@ -115,5 +119,19 @@ var setDeliverySameSize = function() {
 
 var setDeliveryAuto = function() {
     $("#delivery").height('auto')
+}
 
+var checkForChrome = function() {
+    if (window.chrome) {
+        var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>Not seeing any emojis? Try Firefox or Safari. Chrome doesn't like emojis.</div>"
+        $(chromeWarning).insertAfter($("#title"))
+    }
+}
+
+var disableButtonsWithNoText = function() {
+    if ($("#textbox").val().length > 0) {
+        $("button").removeClass("pure-button-disabled")
+    } else {
+        $("button").addClass("pure-button-disabled")
+    }
 }
