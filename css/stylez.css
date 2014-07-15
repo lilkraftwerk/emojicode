@@ -47,24 +47,11 @@ html, button, input, select, textarea,
 
 #title {
   font-family: 'Pacifico', cursive;
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   margin: 15px 0px;
   text-shadow: 2px 2px 0px white;
 }
-
-/*#delivery {*/
-  /*font-size: 1.5em;*/
-  /*background-color: white;*/
-  /*margin-top: 10px;*/
-  /*margin-bottom: 30px;*/
-  /*height: auto;*/
-  /*padding: 5%;*/
-  /*width: 80%;*/
-  /*margin-left: 5%;*/
-  /*border: 3px solid #cccccc;*/
-
-/*}*/
 
 #delivery {
   height: auto;
@@ -105,8 +92,6 @@ html, button, input, select, textarea,
 }
 
 textarea {
-  /*min-heig
-  ht: 150px;*/
   height: auto;
   font-size: 2em;
   width: 100%;
@@ -196,8 +181,12 @@ button p  {
   #title{
     display:none;
   }
+  textarea {
+    font-size: 1em;
+  }
   #delivery {
     margin-bottom: 0;
+    font-size: 1em;
   }
 }
 
