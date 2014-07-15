@@ -68,7 +68,7 @@ html, button, input, select, textarea,
 
 #delivery {
   height: auto;
-  font-size: 1.5em;
+  font-size: 2em;
   width: 100%;
   resize: none;
   padding: 5%;
@@ -76,7 +76,7 @@ html, button, input, select, textarea,
   border: 3px solid white;
   font-family: 'Open Sans', sans-serif;
   background-color: white;
-  color: gray;
+  color: black;
   word-wrap: break-word;
 }
 
@@ -92,7 +92,7 @@ textarea {
   /*min-heig
   ht: 150px;*/
   height: auto;
-  font-size: 1.5em;
+  font-size: 2em;
   width: 100%;
   resize: none;
   padding: 5%;
