@@ -45,6 +45,19 @@ html, button, input, select, textarea,
   text-align: left;
 }
 
+#mobile-footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: white;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  color: black;
+  display: none;
+}
+
 #title {
   font-family: 'Pacifico', cursive;
   font-size: 3em;
@@ -180,6 +193,9 @@ button p  {
   }
   #title{
     display:none;
+  }
+  #mobile-footer {
+    display: block;
   }
   textarea {
     font-size: 1em;
