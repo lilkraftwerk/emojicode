@@ -8,9 +8,9 @@ $(document).ready(function() {
         translateFromEmojiToEnglish(textToTranslate)
     })
     checkForChrome()
-    $("#textbox").keyup(function() {
+    setInterval(function() {
         disableButtonsWithNoText()
-    })
+    }, 500);
 })
 
 window.onload = function() {

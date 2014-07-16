@@ -45,12 +45,12 @@ html, button, input, select, textarea,
   width: 50%;
   margin: 40px 25%;
   background-color: white;
-  height: 3em;
-  line-height: 3em;
+  height: 2em;
+  line-height: 2em;
   text-align: center;
   color: black;
   font-family: 'Pacifico', cursive;
-  font-size: 2em;
+  font-size: 1em;
   display: none;
 }
 
