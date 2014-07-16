@@ -60,6 +60,7 @@ var translateFromEmojiToEnglish = function(inputString) {
 var returnEnglishCharFromEmoji = function(emoji) {
     var thisCodePoint = emojiToCodePoint(emoji)
     var thisFormattedCode = formatCodePoint(thisCodePoint)
+    console.log(emojiToEnglish[thisFormattedCode])
     return emojiToEnglish[thisFormattedCode]
 }
 
@@ -87,6 +88,9 @@ var splitInputString = function(inputString) {
 //for each in the split string, replace with random emoji for given char's dictionary
 var getRandomEmojiFromArray = function(emojiArray) {
     var randomEmojiIndex = Math.floor(Math.random() * emojiArray.length)
+    var charToReturn = emojiArray[randomEmojiIndex]
+    console.log(charToReturn == undefined)
+    console.log(charToReturn === undefined)
     return emojiArray[randomEmojiIndex]
 }
 
@@ -109,12 +113,6 @@ var translateFromEnglishToEmoji = function(inputString) {
     var translatedSentence = replaceEachCharInString(splitString)
     deliverText(translatedSentence)
 }
-
-
-
-
-
-
 
 //
 // CODE FOR UI
