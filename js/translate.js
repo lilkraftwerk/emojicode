@@ -124,7 +124,7 @@ var setDeliveryAuto = function() {
 var checkForChrome = function() {
     if (window.chrome) {
         var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>Not seeing any emojis? Try Firefox or Safari. Chrome doesn't like emojis.</div>"
-        $(chromeWarning).insertAfter($("#title"))
+        $(chromeWarning).insertBefore($("#mobile-footer"))
     }
 }
 
