@@ -89,17 +89,19 @@ var splitInputString = function(inputString) {
 var getRandomEmojiFromArray = function(emojiArray) {
     var randomEmojiIndex = Math.floor(Math.random() * emojiArray.length)
     var charToReturn = emojiArray[randomEmojiIndex]
-    console.log(charToReturn == undefined)
-    console.log(charToReturn === undefined)
     return emojiArray[randomEmojiIndex]
 }
 
 var replaceEachCharInString = function(splitString) {
     for (i = 0; i < splitString.length; i++) {
         var thisChar = splitString[i]
-        var thisEmojiArray = returnEmojiArray(thisChar)
-        var thisEmoji = getRandomEmojiFromArray(thisEmojiArray)
-        splitString[i] = thisEmoji
+        if (englishToEmojiDictionary[thisChar] === undefined) {
+            splitString[i] = ""
+        } else {
+            var thisEmojiArray = returnEmojiArray(thisChar)
+            var thisEmoji = getRandomEmojiFromArray(thisEmojiArray)
+            splitString[i] = thisEmoji
+        }
     }
     return splitString.join("")
 }
