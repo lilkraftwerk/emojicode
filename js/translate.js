@@ -10,13 +10,14 @@ $(document).ready(function() {
     checkForChrome()
     setInterval(function() {
         disableButtonsWithNoText()
-    }, 500);
+    }, 50);
 })
 
-window.onload = function() {
-    setDeliverySameSize()
-}
+//
+// CODE FOR TRANSLATING
+//
 
+// Turns a string of emojjis into a split array
 var emojiStringToArray = function(str) {
     split = str.split(/([\uD800-\uDBFF][\uDC00-\uDFFF])/);
     arr = [];
@@ -28,6 +29,9 @@ var emojiStringToArray = function(str) {
     }
     return arr;
 };
+
+
+
 
 var emojiToCodePoint = function(emoji) {
     return punycode.ucs2.decode(emoji)
@@ -80,8 +84,7 @@ var splitInputString = function(inputString) {
     return inputString.split("")
 }
 
-//for each in the split string, replace with random emoji from dictionary
-
+//for each in the split string, replace with random emoji for given char's dictionary
 var getRandomEmojiFromArray = function(emojiArray) {
     var randomEmojiIndex = Math.floor(Math.random() * emojiArray.length)
     return emojiArray[randomEmojiIndex]
@@ -108,24 +111,18 @@ var translateFromEnglishToEmoji = function(inputString) {
 }
 
 
-var deliverText = function(valueToDeliver) {
-    $("#delivery").html(valueToDeliver)
-    setDeliveryAuto()
-}
 
-var setDeliverySameSize = function() {
-    $("#delivery").height($("#textbox").height())
-}
 
-var setDeliveryAuto = function() {
-    $("#delivery").height('auto')
-}
 
-var checkForChrome = function() {
-    if (window.chrome) {
-        var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>Not seeing any emojis? Try Firefox or Safari. Chrome doesn't like emojis.</div>"
-        $(chromeWarning).insertBefore($("#mobile-footer"))
-    }
+
+
+//
+// CODE FOR UI
+//
+
+
+window.onload = function() {
+    setDeliverySameSize()
 }
 
 var disableButtonsWithNoText = function() {
@@ -134,4 +131,28 @@ var disableButtonsWithNoText = function() {
     } else {
         $("button").addClass("pure-button-disabled")
     }
+}
+
+
+// Show Chrome users a warning since Chrome hates emojis :(
+var checkForChrome = function() {
+    if (window.chrome) {
+        var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>Not seeing any emojis? Try Firefox or Safari. Chrome doesn't like emojis.</div>"
+        $(chromeWarning).insertBefore($("#mobile-footer"))
+    }
+}
+
+
+var deliverText = function(valueToDeliver) {
+    $("#delivery").html(valueToDeliver)
+    setDeliveryAuto()
+}
+
+// Consistent sizing for #Delivery box
+var setDeliverySameSize = function() {
+    $("#delivery").height($("#textbox").height())
+}
+
+var setDeliveryAuto = function() {
+    $("#delivery").height('auto')
 }
