@@ -147,7 +147,7 @@ var checkForChrome = function() {
 }
 
 var addChromeMessage = function() {
-    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install Chromoji or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
+    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install <a href='https://chrome.google.com/webstore/detail/chromoji-emoji-for-google/cahedbegdkagmcjfolhdlechbkeaieki' target='_blank'>Chromoji</a> or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
     $("#chrome-warning").html(chromeWarning)
 }
 
