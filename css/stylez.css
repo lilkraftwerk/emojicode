@@ -29,6 +29,10 @@ html, button, input, select, textarea,
   display:none;
 }
 
+#sampleconvo{
+  margin-top: 10px;
+}
+
 
 .mobile-menu {
   font-family: 'Pacifico', cursive;
