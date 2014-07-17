@@ -25,6 +25,10 @@ html, button, input, select, textarea,
         vertical-align: middle;
 }
 
+#hidden-link{
+  display:none;
+}
+
 
 .mobile-menu {
   font-family: 'Pacifico', cursive;
@@ -248,4 +252,8 @@ button p  {
   color: black;
 }
 
+#chrome-menu img {
+  height: 18px;
+  width: 18px;
+}
 

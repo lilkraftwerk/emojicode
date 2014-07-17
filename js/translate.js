@@ -7,6 +7,10 @@ $(document).ready(function() {
         var textToTranslate = getTextboxValue()
         translateFromEmojiToEnglish(textToTranslate)
     })
+    $(document).on("click", "#chrome-menu", function(event) {
+        event.preventDefault()
+        addChromeMessage()
+    })
     checkForChrome()
     setInterval(function() {
         disableButtonsWithNoText()
@@ -137,15 +141,26 @@ var disableButtonsWithNoText = function() {
 // Show Chrome users a warning since Chrome hates emojis :(
 var checkForChrome = function() {
     if (window.chrome) {
-        var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>Not seeing any emojis? Try Firefox or Safari. Chrome doesn't like emojis.</div>"
-        $(chromeWarning).insertBefore($("#mobile-footer"))
+        var chromeMenuItem = "<li id='chrome-menu'><a href='#'><img src='img/crying.jpg'> Not seeing emojis? <img src='img/crying.jpg'></li>"
     }
+    $(chromeMenuItem).insertAfter($("#about-item"))
 }
 
+var addChromeMessage = function() {
+    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install Chromoji or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
+    $("#chrome-warning").html(chromeWarning)
+}
+
+var addHiddenDivThatSomehowMakesChromojiWork = function() {
+    if ($("#hidden-chromoji").length) {} else {
+        $("<div id='hidden-chromoji'></div>").insertBefore($("#delivery"))
+    }
+}
 
 var deliverText = function(valueToDeliver) {
     $("#delivery").html(valueToDeliver)
     setDeliveryAuto()
+    addHiddenDivThatSomehowMakesChromojiWork()
 }
 
 // Consistent sizing for #Delivery box
