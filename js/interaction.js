@@ -46,6 +46,7 @@ var deliverText = function(valueToDeliver) {
     $("#delivery").html(valueToDeliver)
     setDeliveryAuto()
     addHiddenDivThatSomehowMakesChromojiWork()
+    highlightDeliveryBox()
 }
 
 // Consistent sizing for #Delivery box
@@ -57,4 +58,8 @@ var setDeliverySameSize = function() {
 
 var setDeliveryAuto = function() {
     $("#delivery").height('auto')
+}
+
+var highlightDeliveryBox = function(){
+    $("#delivery").effect("highlight", {color:"#0ABFBC"}, 100)
 }

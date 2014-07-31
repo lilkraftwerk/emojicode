@@ -4,7 +4,6 @@ $(document).ready(function() {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         $("#delivery").removeClass("delivery-background")
-
     })
     $(document).on("click", "#chrome-menu", function(event) {
         event.preventDefault()
@@ -14,7 +13,6 @@ $(document).ready(function() {
     setInterval(function() {
         disableButtonsWithNoText()
         setDeliverySameSize()
-
     }, 50);
 
 
