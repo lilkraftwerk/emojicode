@@ -1,11 +1,10 @@
 $(document).ready(function() {
-    $("#text2emoji").on("click", function() {
+
+    $("#translate").on("click", function() {
         var textToTranslate = getTextboxValue()
-        translateFromEnglishToEmoji(textToTranslate)
-    })
-    $("#emoji2text").on("click", function() {
-        var textToTranslate = getTextboxValue()
-        translateFromEmojiToEnglish(textToTranslate)
+        translate(textToTranslate)
+        $("#delivery").removeClass("delivery-background")
+
     })
     $(document).on("click", "#chrome-menu", function(event) {
         event.preventDefault()
@@ -42,7 +41,33 @@ $(document).ready(function() {
 // CODE FOR TRANSLATING
 //
 
-// Turns a string of emojjis into a split array
+// Turns a string of emojis into a split array
+
+var translate = function(textInput){
+
+    if(moreEmojisThanText(textInput)){
+     translateFromEmojiToEnglish(textInput)
+    } else {
+    translateFromEnglishToEmoji(textInput)
+    }
+}
+
+
+var moreEmojisThanText = function(textInput){
+    var emojis = 0;
+    var nonEmojiChars = 0;
+    var emojiSplit = emojiStringToArray(textInput)
+    for(i=0; i < emojiSplit.length; i++){
+        if (returnEnglishCharFromEmoji(emojiSplit[i])){
+            emojis += 1
+        } else {
+            nonEmojiChars += emojiSplit[i].length
+        }
+    }
+    return (emojis > nonEmojiChars)
+}
+
+
 var emojiStringToArray = function(str) {
     split = str.split(/([\uD800-\uDBFF][\uDC00-\uDFFF])/);
     arr = [];

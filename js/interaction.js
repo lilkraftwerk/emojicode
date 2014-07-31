@@ -5,8 +5,6 @@
 
 window.onload = function() {
     setDeliverySameSize()
-    $("#delivery").fadeIn()
-    $("#textbox").fadeIn()
 }
 
 var disableButtonsWithNoText = function() {
