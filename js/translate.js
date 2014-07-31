@@ -14,7 +14,28 @@ $(document).ready(function() {
     checkForChrome()
     setInterval(function() {
         disableButtonsWithNoText()
+        setDeliverySameSize()
+
     }, 50);
+
+
+    $('#copy').zclip({
+        path:'ZeroClipboard.swf',
+        copy:$('#delivery').text()
+    });
+
+    // The link with ID "copy-description" will copy
+    // the text of the paragraph with ID "description"
+
+
+    $('a#copy-dynamic').zclip({
+        path:'ZeroClipboard.swf',
+        copy:function(){return $('input#dynamic').val();}
+    });
+
+    // The link with ID "copy-dynamic" will copy the current value
+    // of a dynamically changing input with the ID "dynamic"
+
 })
 
 //
@@ -64,7 +85,6 @@ var translateFromEmojiToEnglish = function(inputString) {
 var returnEnglishCharFromEmoji = function(emoji) {
     var thisCodePoint = emojiToCodePoint(emoji)
     var thisFormattedCode = formatCodePoint(thisCodePoint)
-    console.log(emojiToEnglish[thisFormattedCode])
     return emojiToEnglish[thisFormattedCode]
 }
 
@@ -118,56 +138,4 @@ var translateFromEnglishToEmoji = function(inputString) {
     var splitString = splitInputString(inputString)
     var translatedSentence = replaceEachCharInString(splitString)
     deliverText(translatedSentence)
-}
-
-//
-// CODE FOR UI
-//
-
-
-window.onload = function() {
-    setDeliverySameSize()
-}
-
-var disableButtonsWithNoText = function() {
-    if ($("#textbox").val().length > 0) {
-        $("button").removeClass("pure-button-disabled")
-    } else {
-        $("button").addClass("pure-button-disabled")
-    }
-}
-
-
-// Show Chrome users a warning since Chrome hates emojis :(
-var checkForChrome = function() {
-    if (window.chrome) {
-        var chromeMenuItem = "<li id='chrome-menu'><a href='#'><img src='img/crying.jpg'> Not seeing emojis? <img src='img/crying.jpg'></li>"
-    }
-    $(chromeMenuItem).insertAfter($("#about-item"))
-}
-
-var addChromeMessage = function() {
-    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install <a href='https://chrome.google.com/webstore/detail/chromoji-emoji-for-google/cahedbegdkagmcjfolhdlechbkeaieki' target='_blank'>Chromoji</a> or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
-    $("#chrome-warning").html(chromeWarning)
-}
-
-var addHiddenDivThatSomehowMakesChromojiWork = function() {
-    if ($("#hidden-chromoji").length) {} else {
-        $("<div id='hidden-chromoji'></div>").insertBefore($("#delivery"))
-    }
-}
-
-var deliverText = function(valueToDeliver) {
-    $("#delivery").html(valueToDeliver)
-    setDeliveryAuto()
-    addHiddenDivThatSomehowMakesChromojiWork()
-}
-
-// Consistent sizing for #Delivery box
-var setDeliverySameSize = function() {
-    $("#delivery").height($("#textbox").height())
-}
-
-var setDeliveryAuto = function() {
-    $("#delivery").height('auto')
 }

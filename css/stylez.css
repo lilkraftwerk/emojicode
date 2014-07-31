@@ -85,6 +85,14 @@ html, button, input, select, textarea,
   word-wrap: break-word;
 }
 
+.delivery-background {
+    background-image: url('../img/outbox.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 12%;
+}
+
+
 #chrome {
   width: 30%;
   height: auto;
@@ -113,6 +121,13 @@ html, button, input, select, textarea,
   text-align: center;
 }
 
+.textarea-background {
+  background-image: url('../img/inbox.png');
+  background-position: center;
+  background-size: 12%;
+  background-repeat: no-repeat;
+}
+
 textarea {
   height: auto;
   font-size: 2em;
@@ -121,6 +136,7 @@ textarea {
   padding: 5%;
   outline: none;
   border: 3px solid white;
+
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -257,3 +273,7 @@ button p  {
   width: 18px;
 }
 
+.inputoutput {
+text-align: center;
+font-size: 4em;
+}
