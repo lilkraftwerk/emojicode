@@ -61,5 +61,5 @@ var setDeliveryAuto = function() {
 }
 
 var highlightDeliveryBox = function(){
-    $("#delivery").effect("highlight", {color:"#0ABFBC"}, 100)
+    $("#delivery").effect("highlight", {color:"#0ABFBC"}, 300)
 }

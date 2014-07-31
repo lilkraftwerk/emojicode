@@ -16,19 +16,10 @@ $(document).ready(function() {
     }, 50);
 
 
-    $('#copy').zclip({
-        path:'ZeroClipboard.swf',
-        copy:$('#delivery').text()
-    });
 
     // The link with ID "copy-description" will copy
     // the text of the paragraph with ID "description"
 
-
-    $('a#copy-dynamic').zclip({
-        path:'ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
-    });
 
     // The link with ID "copy-dynamic" will copy the current value
     // of a dynamically changing input with the ID "dynamic"
