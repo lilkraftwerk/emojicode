@@ -15,14 +15,24 @@ $(document).ready(function() {
         setDeliverySameSize()
     }, 50);
 
+ var clip = new ZeroClipboard($("#copy"))
 
+clip.on( "ready", function( readyEvent ) {
+  alert( "ZeroClipboard SWF is ready!" );
 
-    // The link with ID "copy-description" will copy
-    // the text of the paragraph with ID "description"
+  clip.on("copy", function(event){
+    var textToCopy = $("#delivery").html()
+    console.log(textToCopy)
+    console.log("didn't copy")
+     event.clipboardData.setData('text/plain', "fuckdix")
+  })
 
+  clip.on( "aftercopy", function( event ) {
+    // `this` === `clip`
+    // `event.target` === the element that was clicked
+  } );
+} );
 
-    // The link with ID "copy-dynamic" will copy the current value
-    // of a dynamically changing input with the ID "dynamic"
 
 })
 

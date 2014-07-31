@@ -1,8 +1,6 @@
 //
 // CODE FOR UI
 //
-
-
 window.onload = function() {
     setDeliverySameSize()
 }
@@ -44,9 +42,9 @@ var addHiddenDivThatSomehowMakesChromojiWork = function() {
 
 var deliverText = function(valueToDeliver) {
     $("#delivery").html(valueToDeliver)
+    highlightDeliveryBox()
     setDeliveryAuto()
     addHiddenDivThatSomehowMakesChromojiWork()
-    highlightDeliveryBox()
 }
 
 // Consistent sizing for #Delivery box
@@ -61,5 +59,6 @@ var setDeliveryAuto = function() {
 }
 
 var highlightDeliveryBox = function(){
+    $("#delivery").css("background-image", "none")
     $("#delivery").effect("highlight", {color:"#0ABFBC"}, 300)
 }
