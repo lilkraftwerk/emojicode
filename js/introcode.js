@@ -23,8 +23,8 @@ var getStepAndDoThings = function(id) {
     if (id == "step4") {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
-        console.log("here here here")
         ShowCopyIfAble()
+        setDeliverySameSize()
 
     }
     if (id == 5) {
@@ -34,6 +34,7 @@ var getStepAndDoThings = function(id) {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         ShowCopyIfAble()
+        setDeliverySameSize()
 
     }
 }
@@ -55,7 +56,7 @@ function startIntro() {
             intro: "Press this button to translate it to EmojiCode",
             position: 'top'
         }, {
-            element: document.querySelector('#step4'),
+            element: document.querySelector('#delivery'),
             intro: "Behold! Your message has been translated to EmojiCode! EmojiCode is randomized so you can\'t learn to read it.",
             position: 'left'
         }, {
@@ -67,8 +68,9 @@ function startIntro() {
             intro: "Press this button again to decode the message!",
             position: 'top'
         }, {
-            element: document.querySelector('#step4'),
-            intro: 'Amazing!',
+            element: document.querySelector('#delivery'),
+
+            intro: 'Absolutely Amazing!',
         }]
     });
 
