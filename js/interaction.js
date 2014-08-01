@@ -13,11 +13,7 @@ var disableButtonsWithNoText = function() {
         $("button").addClass("pure-button-disabled")
         $("#textbox").addClass("textarea-background")
     }
-    if ($("#delivery").text().length > 0) {
-        $("#delivery").removeClass("delivery-background")
-    } else {
-        $("#delivery").addClass("delivery-background")
-    }
+
 }
 
 
@@ -61,4 +57,10 @@ var setDeliveryAuto = function() {
 var highlightDeliveryBox = function(){
     $("#delivery").css("background-image", "none")
     $("#delivery").effect("highlight", {color:"#0ABFBC"}, 300)
+}
+
+var overlayCopySuccess = function(){
+    var overlay = $('<div class="overlay">Success! Copied your EmojiCode to Clipboard!</div>');
+    $("#delivery").append(overlay)
+    $(".overlay").fadeOut(1000)
 }

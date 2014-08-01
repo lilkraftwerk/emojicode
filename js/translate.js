@@ -15,27 +15,38 @@ $(document).ready(function() {
         setDeliverySameSize()
     }, 50);
 
- var clip = new ZeroClipboard($("#copy"))
-
-clip.on( "ready", function( readyEvent ) {
-  alert( "ZeroClipboard SWF is ready!" );
-
-  clip.on("copy", function(event){
-    var textToCopy = $("#delivery").html()
-    console.log(textToCopy)
-    console.log("didn't copy")
-     event.clipboardData.setData('text/plain', "fuckdix")
-  })
-
-  clip.on( "aftercopy", function( event ) {
-    // `this` === `clip`
-    // `event.target` === the element that was clicked
+    var clip = new ZeroClipboard($("#copy"))
+    clip.on( "ready", function( readyEvent ) {
+      clip.on("copy", function(event){
+        var textToCopy = returnCopyText()
+        console.log(textToCopy)
+        console.log("didn't copy")
+        event.clipboardData.setData('text/plain', textToCopy)
+    })
+      clip.on( "aftercopy", function( event ) {
+     overlayCopySuccess()
+    } );
   } );
-} );
 
 
 })
 
+var returnCopyText = function(){
+    if(window.chrome){
+        return getAltTagOfEveryChromoji()
+    } else {
+        return $("#delivery").text()
+    }
+}
+
+var getAltTagOfEveryChromoji = function(){
+        tags = ""
+        $('#delivery').children('img').each(function(){
+            console.log($(this).attr("alt"))
+        tags += $(this).attr("alt")
+        })
+        return tags
+}
 //
 // CODE FOR TRANSLATING
 //
@@ -45,10 +56,10 @@ clip.on( "ready", function( readyEvent ) {
 var translate = function(textInput){
 
     if(moreEmojisThanText(textInput)){
-     translateFromEmojiToEnglish(textInput)
-    } else {
+       translateFromEmojiToEnglish(textInput)
+   } else {
     translateFromEnglishToEmoji(textInput)
-    }
+}
 }
 
 
