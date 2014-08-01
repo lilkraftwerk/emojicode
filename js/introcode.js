@@ -46,14 +46,14 @@ function startIntro() {
     intro.setOptions({
         showStepNumbers: false,
         steps: [{
-            intro: "Welcome, my friend, to EmojiCode. EmojiCode is a new language that lets you encode any message into pure emojis."
+            intro: "Welcome, my friend, to EmojiCode. EmojiCode is a new language that lets you encode any message into pure emojis. You can use the arrow keys to navigate through this li'l tour."
 
         }, {
             element: document.querySelector('#textbox'),
             intro: "To get started, type your message in here. Go on, don't be afraid!",
         }, {
             element: document.querySelector('#translate'),
-            intro: "Then ress this button to translate it to EmojiCode...",
+            intro: "Then press this button to translate it to EmojiCode...",
             position: 'top'
         }, {
             element: document.querySelector('#delivery'),
@@ -70,7 +70,7 @@ function startIntro() {
         }, {
             element: document.querySelector('#delivery'),
 
-            intro: '&#128526; &#128526; &#128526; Way Cool! &#128526; &#128526; &#128526;',
+            intro: 'Way Cool!',
         }]
     });
 
