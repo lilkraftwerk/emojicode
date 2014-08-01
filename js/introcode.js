@@ -72,6 +72,8 @@ function startIntro() {
         }]
     });
 
+
+
     intro.onchange(function(targetElement) {
         var target = $(targetElement)
         getStepAndDoThings(target[0].id)
