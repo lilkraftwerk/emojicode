@@ -11,6 +11,7 @@ var getStepAndDoThings = function(id) {
         "Woof woof woof I'm a precious little doggie arf arf arf"
     ]
     var randomSaying = sayings[Math.floor(Math.random() * sayings.length)]
+    console.log(id)
     if (id == "textbox") {
         if (stepOne) {
             $("#textbox").val(returnCopyText())
@@ -22,13 +23,14 @@ var getStepAndDoThings = function(id) {
     if (id == "step4") {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
+        console.log("here here here")
         ShowCopyIfAble()
 
     }
     if (id == 5) {
         $("#textbox").val(returnCopyText())
     }
-    if (id == 7) {
+    if (id == "delivery") {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         ShowCopyIfAble()
@@ -43,30 +45,30 @@ function startIntro() {
     intro.setOptions({
         showStepNumbers: false,
         steps: [{
-            intro: "WELCOME TO EMOJICODE. Translate any message into PURE EMOJIS and back again."
+            intro: "WELCOME TO EMOJICODE. EmojiCode lets you encode any message into pure emojis."
 
         }, {
             element: document.querySelector('#textbox'),
-            intro: "Type a message in here.",
+            intro: "To get started, type a message in here",
         }, {
             element: document.querySelector('#translate'),
             intro: "Press this button to translate it to EmojiCode",
             position: 'top'
         }, {
             element: document.querySelector('#step4'),
-            intro: 'Behold! Your message is now encoded.',
+            intro: "Behold! Your message has been translated to EmojiCode! EmojiCode is randomized so you can\'t learn to read it.",
             position: 'left'
         }, {
             element: document.querySelector('#textbox'),
-            intro: "Send it to a friend and they can translate it back into English.",
+            intro: "Copy and send your EmojiCode to a friend. They can paste it into this box to translate it back",
             position: 'bottom'
         }, {
             element: document.querySelector('#translate'),
             intro: "Press this button again to decode the message!",
             position: 'top'
         }, {
-            element: document.querySelector('#delivery'),
-            intro: 'W O W !',
+            element: document.querySelector('#step4'),
+            intro: 'Amazing!',
         }]
     });
 
@@ -75,5 +77,8 @@ function startIntro() {
         getStepAndDoThings(target[0].id)
     })
 
+    intro.oncomplete(function() {
+        stepOne = false;
+    })
     intro.start();
 }

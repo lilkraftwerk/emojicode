@@ -4,7 +4,6 @@ $(document).ready(function() {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         $("#delivery").removeClass("delivery-background")
-        ShowCopyIfAble()
     })
     $(document).on("click", "#chrome-menu", function(event) {
         event.preventDefault()
@@ -22,7 +21,8 @@ $(document).ready(function() {
     //     }).start();
     // })
 
-    $("#begin-tour").on("click", function() {
+    $("#begin-tour").on("click", function(event) {
+        event.preventDefault()
         startIntro()
     })
 
@@ -93,6 +93,7 @@ var translate = function(textInput) {
 }
 
 
+
 var moreEmojisThanText = function(textInput) {
     var emojis = 0;
     var nonEmojiChars = 0;
@@ -145,6 +146,7 @@ var translateFromEmojiToEnglish = function(inputString) {
     }
     var joinedString = textArray.join("")
     deliverText(textArray)
+    $("#copy").hide()
 }
 
 var returnEnglishCharFromEmoji = function(emoji) {
@@ -203,4 +205,6 @@ var translateFromEnglishToEmoji = function(inputString) {
     var splitString = splitInputString(inputString)
     var translatedSentence = replaceEachCharInString(splitString)
     deliverText(translatedSentence)
+    ShowCopyIfAble()
+
 }
