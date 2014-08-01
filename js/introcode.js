@@ -46,14 +46,14 @@ function startIntro() {
     intro.setOptions({
         showStepNumbers: false,
         steps: [{
-            intro: "WELCOME TO EMOJICODE. EmojiCode lets you encode any message into pure emojis."
+            intro: "Welcome, my friend, to EmojiCode. EmojiCode is a new language that lets you encode any message into pure emojis."
 
         }, {
             element: document.querySelector('#textbox'),
-            intro: "To get started, type a message in here",
+            intro: "To get started, type your message in here. Go on, don't be afraid!",
         }, {
             element: document.querySelector('#translate'),
-            intro: "Press this button to translate it to EmojiCode",
+            intro: "Then ress this button to translate it to EmojiCode...",
             position: 'top'
         }, {
             element: document.querySelector('#delivery'),
@@ -61,16 +61,16 @@ function startIntro() {
             position: 'left'
         }, {
             element: document.querySelector('#textbox'),
-            intro: "Copy and send your EmojiCode to a friend. They can paste it into this box to translate it back",
+            intro: "Once you have the EmojiCode, copy it and send the encoded message to a friend so they can translate it back...",
             position: 'bottom'
         }, {
             element: document.querySelector('#translate'),
-            intro: "Press this button again to decode the message!",
+            intro: "After you've pasted in the encoded message, press this button again to decode it...",
             position: 'top'
         }, {
             element: document.querySelector('#delivery'),
 
-            intro: 'Absolutely Amazing!',
+            intro: '&#128526; &#128526; &#128526; Way Cool! &#128526; &#128526; &#128526;',
         }]
     });
 
