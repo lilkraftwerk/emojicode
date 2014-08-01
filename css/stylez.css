@@ -118,10 +118,10 @@ html, button, input, select, textarea,
   width: 100%;
   resize: none;
   padding: 5%;
+  background-color: #CCC;
   outline: none;
   border: 3px solid white;
   font-family: 'Open Sans', sans-serif;
-  background-color: white;
   color: black;
   word-wrap: break-word;
 }
@@ -198,7 +198,7 @@ textarea {
   text-align: center;
   width: 80%;
   padding: 0;
-  height: 4em;
+  height: 3em;
   min-width: 100px;
   font-size: 4em;
   margin: 10px 10%;

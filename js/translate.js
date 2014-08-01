@@ -4,7 +4,7 @@ $(document).ready(function() {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         $("#delivery").removeClass("delivery-background")
-        $("#copy").show()
+        ShowCopyIfAble()
     })
     $(document).on("click", "#chrome-menu", function(event) {
         event.preventDefault()
@@ -29,6 +29,12 @@ $(document).ready(function() {
 
 
 })
+
+var ShowCopyIfAble = function() {
+    if (!(swfobject.getFlashPlayerVersion().major === 0)) {
+        $("#copy").show()
+    }
+}
 
 var returnCopyText = function() {
     if (window.chrome) {
