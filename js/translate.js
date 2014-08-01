@@ -15,6 +15,17 @@ $(document).ready(function() {
         disableButtonsWithNoText()
         setDeliverySameSize()
     }, 50);
+    // $("#begin-tour").on("click", function() {
+    //     introJs().onchange(function(targetElement) {
+    //         var target = $(targetElement)
+    //         getStepAndDoThings(target.attr("data-step"))
+    //     }).start();
+    // })
+
+    $("#begin-tour").on("click", function() {
+        startIntro()
+    })
+
 
     var clip = new ZeroClipboard($("#copy"))
     clip.on("ready", function(readyEvent) {
