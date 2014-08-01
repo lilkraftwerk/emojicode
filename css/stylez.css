@@ -14,6 +14,43 @@ html, button, input, select, textarea,
   margin-left: 25%;
 }
 
+#deliverybox{
+  position: relative;
+}
+
+.overlay {
+  text-align: center;
+  background-color: white;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: auto;
+  top: 20%;
+  left: 0;
+  position: absolute;
+  z-index: 500;
+  border: 3px solid black;
+}
+
+#copy {
+  outline: none;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  left: 97%;
+  height: 40px;
+  font-size: 2em;
+  background-color: #0ABFBC;
+  border: 3px solid white;
+  border-radius: 10px;
+  z-index: 300;
+  display: none;
+}
+
+#copy:hover{
+  opacity: .1;
+}
+
 #restofmenu {
   text-align: right;
   color: pink;
@@ -76,7 +113,7 @@ html, button, input, select, textarea,
 }
 
 #delivery {
-  height: auto;
+  position: relative;
   font-size: 2em;
   width: 100%;
   resize: none;
@@ -88,6 +125,14 @@ html, button, input, select, textarea,
   color: black;
   word-wrap: break-word;
 }
+
+.delivery-background {
+    background-image: url('../img/outbox.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 12%;
+}
+
 
 #chrome {
   width: 30%;
@@ -117,8 +162,16 @@ html, button, input, select, textarea,
   text-align: center;
 }
 
+.textarea-background {
+  background-image: url('../img/inbox.png');
+  background-position: center;
+  background-size: 12%;
+  background-repeat: no-repeat;
+}
+
 textarea {
-  height: auto;
+  position: relative;
+  height: 5em;
   font-size: 2em;
   width: 100%;
   resize: none;
@@ -145,9 +198,9 @@ textarea {
   text-align: center;
   width: 80%;
   padding: 0;
-  height: 3em;
+  height: 4em;
   min-width: 100px;
-  font-size: 2.3em;
+  font-size: 4em;
   margin: 10px 10%;
   background-color: #0ABFBC;
   border: 3px solid white;
@@ -211,6 +264,9 @@ button p  {
     margin-bottom: 10px;
     font-size: 1em;
   }
+  #copy{
+    display: none;
+  }
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -261,3 +317,7 @@ button p  {
   width: 18px;
 }
 
+.inputoutput {
+text-align: center;
+font-size: 4em;
+}

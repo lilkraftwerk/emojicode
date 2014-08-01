@@ -1,11 +1,10 @@
 $(document).ready(function() {
-    $("#text2emoji").on("click", function() {
+
+    $("#translate").on("click", function() {
         var textToTranslate = getTextboxValue()
-        translateFromEnglishToEmoji(textToTranslate)
-    })
-    $("#emoji2text").on("click", function() {
-        var textToTranslate = getTextboxValue()
-        translateFromEmojiToEnglish(textToTranslate)
+        translate(textToTranslate)
+        $("#delivery").removeClass("delivery-background")
+        $("#copy").show()
     })
     $(document).on("click", "#chrome-menu", function(event) {
         event.preventDefault()
@@ -14,14 +13,72 @@ $(document).ready(function() {
     checkForChrome()
     setInterval(function() {
         disableButtonsWithNoText()
+        setDeliverySameSize()
     }, 50);
+
+    var clip = new ZeroClipboard($("#copy"))
+    clip.on( "ready", function( readyEvent ) {
+      clip.on("copy", function(event){
+        var textToCopy = returnCopyText()
+        console.log(textToCopy)
+        console.log("didn't copy")
+        event.clipboardData.setData('text/plain', textToCopy)
+    })
+      clip.on( "aftercopy", function( event ) {
+     overlayCopySuccess()
+    } );
+  } );
+
+
 })
 
+var returnCopyText = function(){
+    if(window.chrome){
+        return getAltTagOfEveryChromoji()
+    } else {
+        return $("#delivery").text()
+    }
+}
+
+var getAltTagOfEveryChromoji = function(){
+        tags = ""
+        $('#delivery').children('img').each(function(){
+            console.log($(this).attr("alt"))
+        tags += $(this).attr("alt")
+        })
+        return tags
+}
 //
 // CODE FOR TRANSLATING
 //
 
-// Turns a string of emojjis into a split array
+// Turns a string of emojis into a split array
+
+var translate = function(textInput){
+
+    if(moreEmojisThanText(textInput)){
+       translateFromEmojiToEnglish(textInput)
+   } else {
+    translateFromEnglishToEmoji(textInput)
+}
+}
+
+
+var moreEmojisThanText = function(textInput){
+    var emojis = 0;
+    var nonEmojiChars = 0;
+    var emojiSplit = emojiStringToArray(textInput)
+    for(i=0; i < emojiSplit.length; i++){
+        if (returnEnglishCharFromEmoji(emojiSplit[i])){
+            emojis += 1
+        } else {
+            nonEmojiChars += emojiSplit[i].length
+        }
+    }
+    return (emojis > nonEmojiChars)
+}
+
+
 var emojiStringToArray = function(str) {
     split = str.split(/([\uD800-\uDBFF][\uDC00-\uDFFF])/);
     arr = [];
@@ -64,7 +121,6 @@ var translateFromEmojiToEnglish = function(inputString) {
 var returnEnglishCharFromEmoji = function(emoji) {
     var thisCodePoint = emojiToCodePoint(emoji)
     var thisFormattedCode = formatCodePoint(thisCodePoint)
-    console.log(emojiToEnglish[thisFormattedCode])
     return emojiToEnglish[thisFormattedCode]
 }
 
@@ -118,56 +174,4 @@ var translateFromEnglishToEmoji = function(inputString) {
     var splitString = splitInputString(inputString)
     var translatedSentence = replaceEachCharInString(splitString)
     deliverText(translatedSentence)
-}
-
-//
-// CODE FOR UI
-//
-
-
-window.onload = function() {
-    setDeliverySameSize()
-}
-
-var disableButtonsWithNoText = function() {
-    if ($("#textbox").val().length > 0) {
-        $("button").removeClass("pure-button-disabled")
-    } else {
-        $("button").addClass("pure-button-disabled")
-    }
-}
-
-
-// Show Chrome users a warning since Chrome hates emojis :(
-var checkForChrome = function() {
-    if (window.chrome) {
-        var chromeMenuItem = "<li id='chrome-menu'><a href='#'><img src='img/crying.jpg'> Not seeing emojis? <img src='img/crying.jpg'></li>"
-    }
-    $(chromeMenuItem).insertAfter($("#about-item"))
-}
-
-var addChromeMessage = function() {
-    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install <a href='https://chrome.google.com/webstore/detail/chromoji-emoji-for-google/cahedbegdkagmcjfolhdlechbkeaieki' target='_blank'>Chromoji</a> or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
-    $("#chrome-warning").html(chromeWarning)
-}
-
-var addHiddenDivThatSomehowMakesChromojiWork = function() {
-    if ($("#hidden-chromoji").length) {} else {
-        $("<div id='hidden-chromoji'></div>").insertBefore($("#delivery"))
-    }
-}
-
-var deliverText = function(valueToDeliver) {
-    $("#delivery").html(valueToDeliver)
-    setDeliveryAuto()
-    addHiddenDivThatSomehowMakesChromojiWork()
-}
-
-// Consistent sizing for #Delivery box
-var setDeliverySameSize = function() {
-    $("#delivery").height($("#textbox").height())
-}
-
-var setDeliveryAuto = function() {
-    $("#delivery").height('auto')
 }
