@@ -17,59 +17,71 @@ $(document).ready(function() {
     }, 50);
 
     var clip = new ZeroClipboard($("#copy"))
-    clip.on( "ready", function( readyEvent ) {
-      clip.on("copy", function(event){
-        var textToCopy = returnCopyText()
-        console.log(textToCopy)
-        console.log("didn't copy")
-        event.clipboardData.setData('text/plain', textToCopy)
-    })
-      clip.on( "aftercopy", function( event ) {
-     overlayCopySuccess()
-    } );
-  } );
+    clip.on("ready", function(readyEvent) {
+        clip.on("copy", function(event) {
+            var textToCopy = returnCopyText()
+            event.clipboardData.setData('text/plain', textToCopy)
+        })
+        clip.on("aftercopy", function(event) {
+            overlayCopySuccess()
+        });
+    });
 
 
 })
 
-var returnCopyText = function(){
-    if(window.chrome){
+var returnCopyText = function() {
+    if (window.chrome) {
         return getAltTagOfEveryChromoji()
     } else {
         return $("#delivery").text()
     }
 }
 
-var getAltTagOfEveryChromoji = function(){
-        tags = ""
-        $('#delivery').children('img').each(function(){
-            console.log($(this).attr("alt"))
-        tags += $(this).attr("alt")
-        })
-        return tags
+var getAltTagOfEveryChromoji = function() {
+    tags = []
+    spaces = getIndexOfSpaces()
+    $('#delivery').children('img').each(function() {
+        tags.push($(this).attr("alt"))
+    })
+    for (i = 0; i < spaces.length; i++) {
+        tags.splice(spaces[i], 0, " ")
+    }
+    return tags.join("")
 }
-//
-// CODE FOR TRANSLATING
-//
+
+var getIndexOfSpaces = function() {
+        var spaces = []
+        var input = getTextboxValue()
+        for (i = 0; i < input.length; i++) {
+            if (input[i] == " ") {
+                spaces.push(i)
+            }
+        }
+        return spaces
+    }
+    //
+    // CODE FOR TRANSLATING
+    //
 
 // Turns a string of emojis into a split array
 
-var translate = function(textInput){
+var translate = function(textInput) {
 
-    if(moreEmojisThanText(textInput)){
-       translateFromEmojiToEnglish(textInput)
-   } else {
-    translateFromEnglishToEmoji(textInput)
+    if (moreEmojisThanText(textInput)) {
+        translateFromEmojiToEnglish(textInput)
+    } else {
+        translateFromEnglishToEmoji(textInput)
+    }
 }
-}
 
 
-var moreEmojisThanText = function(textInput){
+var moreEmojisThanText = function(textInput) {
     var emojis = 0;
     var nonEmojiChars = 0;
     var emojiSplit = emojiStringToArray(textInput)
-    for(i=0; i < emojiSplit.length; i++){
-        if (returnEnglishCharFromEmoji(emojiSplit[i])){
+    for (i = 0; i < emojiSplit.length; i++) {
+        if (returnEnglishCharFromEmoji(emojiSplit[i])) {
             emojis += 1
         } else {
             nonEmojiChars += emojiSplit[i].length
