@@ -5,6 +5,12 @@ window.onload = function() {
     setDeliverySameSize()
 }
 
+var ShowCopyIfAble = function() {
+    if (!(swfobject.getFlashPlayerVersion().major === 0)) {
+        $("#copy").show()
+    }
+}
+
 var disableButtonsWithNoText = function() {
     if ($("#textbox").val().length > 0) {
         $("button").removeClass("pure-button-disabled")
@@ -24,10 +30,6 @@ var checkForChrome = function() {
     $(chromeMenuItem).insertAfter($("#about-item"))
 }
 
-var addChromeMessage = function() {
-    var chromeWarning = "<div id='chrome'><em><img src='img/crying.jpg'></em><br>No emojis? Install <a href='https://chrome.google.com/webstore/detail/chromoji-emoji-for-google/cahedbegdkagmcjfolhdlechbkeaieki' target='_blank'>Chromoji</a> or try Firefox or Safari. Chrome doesn't like emojis :(</div>"
-    $("#chrome-warning").html(chromeWarning)
-}
 
 var addHiddenDivThatSomehowMakesChromojiWork = function() {
     if ($("#hidden-chromoji").length) {} else {
@@ -71,7 +73,6 @@ var overlayCopySuccess = function() {
         "All systems go! Copied to clipboard.",
         "Excellent! Copied to clipboard.",
     ]
-
     var randomSaying = results[Math.floor(Math.random() * results.length)]
     var overlay = $('<div class="overlay">' + randomSaying + '</div>');
     $("#delivery").append(overlay)

@@ -1,29 +1,31 @@
 $(document).ready(function() {
-
     $("#translate").on("click", function() {
         var textToTranslate = getTextboxValue()
         translate(textToTranslate)
         $("#delivery").removeClass("delivery-background")
     })
-    $(document).on("click", "#chrome-menu", function(event) {
-        event.preventDefault()
-        addChromeMessage()
-    })
+
     checkForChrome()
+
     setInterval(function() {
         disableButtonsWithNoText()
         setDeliverySameSize()
     }, 50);
-    // $("#begin-tour").on("click", function() {
-    //     introJs().onchange(function(targetElement) {
-    //         var target = $(targetElement)
-    //         getStepAndDoThings(target.attr("data-step"))
-    //     }).start();
-    // })
 
     $("#begin-tour").on("click", function(event) {
         event.preventDefault()
         startIntro()
+    })
+
+
+    $("#mobile-guide").on("click", function(event) {
+        event.preventDefault()
+        mobileIntro()
+    })
+
+    $("#chrome-menu").on("click", function(event) {
+        event.preventDefault()
+        chromeTips()
     })
 
 
@@ -41,11 +43,6 @@ $(document).ready(function() {
 
 })
 
-var ShowCopyIfAble = function() {
-    if (!(swfobject.getFlashPlayerVersion().major === 0)) {
-        $("#copy").show()
-    }
-}
 
 var returnCopyText = function() {
     if (window.chrome) {
@@ -68,23 +65,23 @@ var getAltTagOfEveryChromoji = function() {
 }
 
 var getIndexOfSpaces = function() {
-        var spaces = []
-        var input = getTextboxValue()
-        for (i = 0; i < input.length; i++) {
-            if (input[i] == " ") {
-                spaces.push(i)
-            }
+    var spaces = []
+    var input = getTextboxValue()
+    for (i = 0; i < input.length; i++) {
+        if (input[i] == " ") {
+            spaces.push(i)
         }
-        return spaces
     }
-    //
-    // CODE FOR TRANSLATING
-    //
+    return spaces
+}
+
+//
+// CODE FOR TRANSLATING
+//
 
 // Turns a string of emojis into a split array
 
 var translate = function(textInput) {
-
     if (moreEmojisThanText(textInput)) {
         translateFromEmojiToEnglish(textInput)
     } else {
@@ -120,8 +117,6 @@ var emojiStringToArray = function(str) {
     }
     return arr;
 };
-
-
 
 
 var emojiToCodePoint = function(emoji) {

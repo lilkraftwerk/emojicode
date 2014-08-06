@@ -79,6 +79,10 @@ html, button, input, select, textarea,
   text-align: center;
 }
 
+.mobile-menu a {
+  text-decoration: none;
+}
+
 #menutitle {
   font-family: 'Pacifico', cursive;
   font-size: 1.5em;
@@ -87,15 +91,14 @@ html, button, input, select, textarea,
 }
 
 #mobile-footer {
-  width: 70%;
-  margin: 40px 15%;
+  width: 80%;
+  margin: 10% 10%;
   background-color: white;
   height: 2em;
   line-height: 2em;
   text-align: center;
   color: black;
-  font-family: 'Pacifico', cursive;
-  font-size: 1.5em;
+  font-size: 1em;
   color: black;
   display: none;
 }
@@ -164,7 +167,7 @@ html, button, input, select, textarea,
 
 .textarea-background {
   background-image: url('../img/inbox.png');
-  background-position: center;
+  background-position: 50% 75%;
   background-size: 12%;
   background-repeat: no-repeat;
 }
